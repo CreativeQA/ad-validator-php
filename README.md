@@ -30,6 +30,7 @@ $array = scanTag($tag);
 $array = scanVAST($url);
 ```
 
+
 ## Basic Examples
 
 ### Scan an HTML5 Zip Ad
@@ -55,6 +56,7 @@ $CreativeQA = new CreativeQA();
 $array = CreativeQA->scanVAST("https://raw.githubusercontent.com/InteractiveAdvertisingBureau/VAST_Samples/master/VAST%203.0%20Samples/Inline_Companion_Tag-test.xml");
 var_dump($array);
 ```
+
 
 ## Some other examples
 Ad servers like Google Ad Manager usually scan a creative to make sure it's SSL-compatible. To do so, use this example:
@@ -129,6 +131,9 @@ $CreativeQA = new CreativeQA();
 $array = CreativeQA->scanTag("This is an ad tag...");
 $network = $array['uses_document_write']; //boolean
 ```
+
+
+
 
 ## Full API Documentation
 See here: https://www.creativeqa.io/api-docs
