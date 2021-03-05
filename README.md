@@ -62,7 +62,7 @@ Ad servers like Google Ad Manager usually scan a creative to make sure it's SSL-
 include('CreativeQA.php');
 $CreativeQA = new CreativeQA();
 $array = CreativeQA->scanTag("This is an ad tag...");
-$ssl_compatible = $array['ssl_compatible'];
+$ssl_compatible = $array['ssl_compatible']; //boolean
 ```
 
 To get a **preview** of an ad tag, use this example:
@@ -70,7 +70,7 @@ To get a **preview** of an ad tag, use this example:
 include('CreativeQA.php');
 $CreativeQA = new CreativeQA();
 $array = CreativeQA->scanTag("This is an ad tag...");
-$preview_url = $array['screenshot']['highres']['url'];
+$preview_image = file_get_contents($array['screenshot']['highres']['url']); //holds image in binary format
 ```
 
 To create a **backup ad** for a HTML5 Zip Ad:
@@ -81,3 +81,62 @@ $array = CreativeQA->scanZip("/path/to/file.zip");
 $backup_ad = file_get_contents($array['screenshot']['highres']['url']); //holds image in binary format
 ```
 
+To check if a creative **drops third-party cookies**:
+```php
+include('CreativeQA.php');
+$CreativeQA = new CreativeQA();
+$array = CreativeQA->scanTag("This is an ad tag...");
+$drops_cookies = (count($array['cookies'])>0); //boolean
+```
+
+To get the **dimensions** of an ad tag:
+```php
+include('CreativeQA.php');
+$CreativeQA = new CreativeQA();
+$array = CreativeQA->scanTag("This is an ad tag...");
+$width = $array['dimensions']['width']; //int
+$height = $array['dimensions']['height']; //int
+```
+
+To get the **CPU usage** of a HTML5 Zip Ad:
+```php
+include('CreativeQA.php');
+$CreativeQA = new CreativeQA();
+$array = CreativeQA->scanZip("/path/to/file.zip");
+$cpu_usage = $array['cpu_usage']; //in milliseconds
+```
+
+To get the **memory usage** of a HTML5 Zip Ad:
+```php
+include('CreativeQA.php');
+$CreativeQA = new CreativeQA();
+$array = CreativeQA->scanZip("/path/to/file.zip");
+$cpu_usage = $array['memory_usage']; //in bytes
+```
+
+To get the **all network requests** of an ad tag:
+```php
+include('CreativeQA.php');
+$CreativeQA = new CreativeQA();
+$array = CreativeQA->scanTag("This is an ad tag...");
+$network = $array['network']; //an array with lots of interesting data
+```
+
+To check if an ad tag STILL **uses document.write()**, even though we're in the year 2021:
+```php
+include('CreativeQA.php');
+$CreativeQA = new CreativeQA();
+$array = CreativeQA->scanTag("This is an ad tag...");
+$network = $array['uses_document_write']; //boolean
+```
+
+## Full API Documentation
+See here: https://www.creativeqa.io/api-docs
+
+## API Pricing
+The API at CreativeQA.io can be used *free of charge*, even for commercial products. A Fair-Use-Policy applies.
+
+## Help & Support
+If you need further help integrating these APIs in your platform, feel free to reach out:
+
+https://www.creativeqa.io/contact
