@@ -1,6 +1,5 @@
 <?php
 
-
 class CreativeQA {
     private $endpoint = 'ENTER_YOUR_ENDPOINT_HERE';
     private $api_key = 'ENTER_YOUR_API_KEY_HERE';
