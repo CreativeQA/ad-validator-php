@@ -37,7 +37,7 @@ $array = scanVAST($url);
 ```php
 include('CreativeQA.php');
 $CreativeQA = new CreativeQA();
-$array = CreativeQA->scanZip("/path/to/file.zip");
+$array = $CreativeQA->scanZip("/path/to/file.zip");
 var_dump($array);
 ```
 
@@ -45,7 +45,7 @@ var_dump($array);
 ```php
 include('CreativeQA.php');
 $CreativeQA = new CreativeQA();
-$array = CreativeQA->scanTag("This is an ad tag...");
+$array = $CreativeQA->scanTag("This is an ad tag...");
 var_dump($array);
 ```
 
@@ -53,7 +53,7 @@ var_dump($array);
 ```php
 include('CreativeQA.php');
 $CreativeQA = new CreativeQA();
-$array = CreativeQA->scanVAST("https://raw.githubusercontent.com/InteractiveAdvertisingBureau/VAST_Samples/master/VAST%203.0%20Samples/Inline_Companion_Tag-test.xml");
+$array = $CreativeQA->scanVAST("https://raw.githubusercontent.com/InteractiveAdvertisingBureau/VAST_Samples/master/VAST%203.0%20Samples/Inline_Companion_Tag-test.xml");
 var_dump($array);
 ```
 
@@ -62,7 +62,7 @@ Ad servers like Google Ad Manager usually scan a creative to make sure it's SSL-
 ```php
 include('CreativeQA.php');
 $CreativeQA = new CreativeQA();
-$array = CreativeQA->scanTag("This is an ad tag...");
+$array = $CreativeQA->scanTag("This is an ad tag...");
 $ssl_compatible = $array['ssl_compatible']; //boolean
 ```
 
@@ -70,7 +70,7 @@ To get a **preview** of an ad tag, use this example:
 ```php
 include('CreativeQA.php');
 $CreativeQA = new CreativeQA();
-$array = CreativeQA->scanTag("This is an ad tag...");
+$array = $CreativeQA->scanTag("This is an ad tag...");
 $preview_image = file_get_contents($array['screenshot']['highres']['url']); //holds image in binary format
 ```
 
@@ -78,7 +78,7 @@ To create a **backup ad** for a HTML5 Zip Ad:
 ```php
 include('CreativeQA.php');
 $CreativeQA = new CreativeQA();
-$array = CreativeQA->scanZip("/path/to/file.zip");
+$array = $CreativeQA->scanZip("/path/to/file.zip");
 $backup_ad = file_get_contents($array['screenshot']['highres']['url']); //holds image in binary format
 ```
 
@@ -86,7 +86,7 @@ To check if a creative **drops third-party cookies**:
 ```php
 include('CreativeQA.php');
 $CreativeQA = new CreativeQA();
-$array = CreativeQA->scanTag("This is an ad tag...");
+$array = $CreativeQA->scanTag("This is an ad tag...");
 $drops_cookies = (count($array['cookies'])>0); //boolean
 ```
 
@@ -94,7 +94,7 @@ To get the **dimensions** of an ad tag:
 ```php
 include('CreativeQA.php');
 $CreativeQA = new CreativeQA();
-$array = CreativeQA->scanTag("This is an ad tag...");
+$array = $CreativeQA->scanTag("This is an ad tag...");
 $width = $array['dimensions']['width']; //int
 $height = $array['dimensions']['height']; //int
 ```
@@ -103,7 +103,7 @@ To get the **CPU usage** of a HTML5 Zip Ad:
 ```php
 include('CreativeQA.php');
 $CreativeQA = new CreativeQA();
-$array = CreativeQA->scanZip("/path/to/file.zip");
+$array = $CreativeQA->scanZip("/path/to/file.zip");
 $cpu_usage = $array['cpu_usage']; //in milliseconds
 ```
 
@@ -111,7 +111,7 @@ To get the **memory usage** of a HTML5 Zip Ad:
 ```php
 include('CreativeQA.php');
 $CreativeQA = new CreativeQA();
-$array = CreativeQA->scanZip("/path/to/file.zip");
+$array = $CreativeQA->scanZip("/path/to/file.zip");
 $cpu_usage = $array['memory_usage']; //in bytes
 ```
 
@@ -119,7 +119,7 @@ To get the **all network requests** of an ad tag:
 ```php
 include('CreativeQA.php');
 $CreativeQA = new CreativeQA();
-$array = CreativeQA->scanTag("This is an ad tag...");
+$array = $CreativeQA->scanTag("This is an ad tag...");
 $network = $array['network']; //an array with lots of interesting data
 ```
 
@@ -127,7 +127,7 @@ To check if an ad tag STILL **uses document.write()**, even though we're in the 
 ```php
 include('CreativeQA.php');
 $CreativeQA = new CreativeQA();
-$array = CreativeQA->scanTag("This is an ad tag...");
+$array = $CreativeQA->scanTag("This is an ad tag...");
 $network = $array['uses_document_write']; //boolean
 ```
 
