@@ -21,7 +21,7 @@ This PHP class supports the following ad formats:
 * VAST Video Ads
 
 ## Preparation
-Request a free API key via https://www.creativeqa.io/html5-ad-validator - you'll get an API key and your endpoint emailed within minutes. Download the PHP class from this repository and paste your **endpoint** and **API Key** in the two variables at the top of the class.
+Sign up for an account on https://www.creativeqa.io/api-docs. Once logged in, find your API key and endpoint in your account. Download the PHP class from this repository and paste your **API Key** and **endpoint** in the two variables at the top of the class.
 
 ## Methods
 ```php
